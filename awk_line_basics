@@ -1,0 +1,246 @@
+---
+[cloud_user@roshansyed27c Exercise Files]$ awk '/up/ {print "UP:: \t",NF, $0} /down/ {print "DOWN:: \t",NF, $0}' dukeofyork.txt
+UP::     10 He marched them up to the top of the hill
+DOWN::   6 And he marched them down again
+UP::     8 And when they were up they were up
+DOWN::   8 And when they were down they were down
+UP::     7 And when they were only half-way up
+UP::     6 They were neither up nor down
+DOWN::   6 They were neither up nor down
+
+[cloud_user@roshansyed27c Exercise Files]$ awk '/up/ {print "UP:: \t",NF, $0} /down/ {print "DOWN:: \t",NF, $0}' dukeofyork.txt
+UP::     10 He marched them up to the top of the hill
+DOWN::   6 And he marched them down again
+UP::     8 And when they were up they were up
+DOWN::   8 And when they were down they were down
+UP::     7 And when they were only half-way up
+UP::     6 They were neither up nor down
+DOWN::   6 They were neither up nor down
+[cloud_user@roshansyed27c Exercise Files]$
+
+[cloud_user@roshansyed27c Exercise Files]$ awk '{print NF, $0 }' dukeofyork.txt
+6 The grand old Duke of York
+5 He had ten thousand men
+10 He marched them up to the top of the hill
+6 And he marched them down again
+8 And when they were up they were up
+8 And when they were down they were down
+7 And when they were only half-way up
+6 They were neither up nor down
+[cloud_user@roshansyed27c Exercise Files]$
+
+[cloud_user@roshansyed27c Exercise Files]$ awk '{print NF }' dukeofyork.txt
+6
+5
+10
+6
+8
+8
+7
+6
+
+[cloud_user@roshansyed27c Exercise Files]$ awk '{print NR }' dukeofyork.txt
+1
+2
+3
+4
+5
+6
+7
+8
+[cloud_user@roshansyed27c Exercise Files]$
+
+[cloud_user@roshansyed27c Exercise Files]$ uptime | awk '{print "NF:" NF, $0}'
+NF:11  10:42:42 up 38 min,  3 users,  load average: 0.00, 0.01, 0.03
+
+[cloud_user@roshansyed27c Exercise Files]$ awk -F , '{print $2}'
+one.two,three
+three
+one,                     two,                                   three
+                         two
+one                     ,               two,            three
+                two
+^C
+[cloud_user@roshansyed27c Exercise Files]$ awk -F ABC '{print $2}'
+oneABCtwoABChree
+two
+one       ABC           two                     ABC                     three
+                two
+^C
+[cloud_user@roshansyed27c Exercise Files]$ awk -F '[,!]' '{print $2}'
+one!two,three
+two
+one,two!three
+two
+^C
+[cloud_user@roshansyed27c Exercise Files]$
+
+[cloud_user@roshansyed27c Exercise Files]$ cat onebigline.txt
+one,two,three!four,five,six!seven,eight,nine!ten,eleven,twelve[cloud_user@roshansyed27c Exercise Files]$ ^C
+[cloud_user@roshansyed27c Exercise Files]$ awk 'BEGIN{FS=","; RS="!"} {print $2}' onebigline.txt
+two
+five
+eight
+eleven
+[cloud_user@roshansyed27c Exercise Files]$ awk 'BEGIN{FS=","; RS="!"} {print $3}' onebigline.txt
+three
+six
+nine
+twelve
+[cloud_user@roshansyed27c Exercise Files]$
+
+[cloud_user@roshansyed27c Exercise Files]$ awk 'BEGIN{RS=""; FS="\n"} {name=$1; address=$2; statecityzip=$3; print name "," address "," statecityzip}' multiaddress.txt
+
+[cloud_user@roshansyed27c Exercise Files]$ awk 'BEGIN{RS=""; FS="\n"} {name=$1; address=$2; statecityzip=$3; print name ",\t" address "," statecityzip}' multiaddress.txt
+
+
+[cloud_user@roshansyed27c Exercise Files]$ cat names.txt
+Gretchen Galloway
+Isaac Steele
+Wayne Myers
+Lillith Lee
+[cloud_user@roshansyed27c Exercise Files]$ awk 'BEGIN{OFS=", ";ORS="!!"} {print $1,$2}' names.txt
+Gretchen, Galloway!!Isaac, Steele!!Wayne, Myers!!Lillith, Lee!!
+[cloud_user@roshansyed27c Exercise Files]$ awk 'BEGIN{OFS=", ";ORS="!!\n"} {print $1,$2}' names.txt
+Gretchen, Galloway!!
+Isaac, Steele!!
+Wayne, Myers!!
+Lillith, Lee!!
+
+[cloud_user@roshansyed27c Exercise Files]$ awk -F , '{print $1 "\t" $2 "\t" $3}' nameemailavg.csv
+Art Venere      art@venere.org  256.62394383
+Lenna Paprocki  lpaprocki@hotmail.com   259.688783099
+Donette Foller  donette.foller@cox.net  282.32979844
+Simona Morasca  simona@morasca.com      139.51911647
+[cloud_user@roshansyed27c Exercise Files]$ awk 'BEGIN{FS=","; OFS="\t"} {print $1,$2,$3}' nameemailavg.csv
+Art Venere      art@venere.org  256.62394383
+Lenna Paprocki  lpaprocki@hotmail.com   259.688783099
+Donette Foller  donette.foller@cox.net  282.32979844
+Simona Morasca  simona@morasca.com      139.51911647
+
+[cloud_user@roshansyed27c Exercise Files]$ awk '{print NR ": ",FILENAME,FNR": " $0}' dukeofyork.txt names.txt
+1:  dukeofyork.txt 1: The grand old Duke of York
+2:  dukeofyork.txt 2: He had ten thousand men
+3:  dukeofyork.txt 3: He marched them up to the top of the hill
+4:  dukeofyork.txt 4: And he marched them down again
+5:  dukeofyork.txt 5: And when they were up they were up
+6:  dukeofyork.txt 6: And when they were down they were down
+7:  dukeofyork.txt 7: And when they were only half-way up
+8:  dukeofyork.txt 8: They were neither up nor down
+9:  names.txt 1: Gretchen Galloway
+10:  names.txt 2: Isaac Steele
+11:  names.txt 3: Wayne Myers
+12:  names.txt 4: Lillith Lee
+13:  names.txt 5: Molly Blackwell
+14:  names.txt 6: Maia Arnold
+15:  names.txt 7: Lev Reese
+
+[cloud_user@roshansyed27c Exercise Files]$ awk '{print $NF}' dukeofyork.txt
+York
+men
+hill
+again
+up
+down
+up
+down
+[cloud_user@roshansyed27c Exercise Files]$ awk '{print $NF-1}' dukeofyork.txt
+-1
+-1
+-1
+-1
+-1
+-1
+-1
+-1
+[cloud_user@roshansyed27c Exercise Files]$ awk '{print $(NF-1)}' dukeofyork.txt
+of
+thousand
+the
+down
+were
+were
+half-way
+nor
+[cloud_user@roshansyed27c Exercise Files]$ awk '{$2="TWO";print $0}' dukeofyork.txt
+The TWO old Duke of York
+He TWO ten thousand men
+He TWO them up to the top of the hill
+And TWO marched them down again
+And TWO they were up they were up
+And TWO they were down they were down
+And TWO they were only half-way up
+They TWO neither up nor down
+[cloud_user@roshansyed27c Exercise Files]$ awk '{$11="TWO";print $0}' dukeofyork.txt
+The grand old Duke of York     TWO
+He had ten thousand men      TWO
+He marched them up to the top of the hill TWO
+And he marched them down again     TWO
+And when they were up they were up   TWO
+And when they were down they were down   TWO
+And when they were only half-way up    TWO
+They were neither up nor down     TWO
+[cloud_user@roshansyed27c Exercise Files]$ awk 'BEGIN{OFS="!"} {$11="TWO";print $0}' dukeofyork.txt
+The!grand!old!Duke!of!York!!!!!TWO
+He!had!ten!thousand!men!!!!!!TWO
+He!marched!them!up!to!the!top!of!the!hill!TWO
+And!he!marched!them!down!again!!!!!TWO
+And!when!they!were!up!they!were!up!!!TWO
+And!when!they!were!down!they!were!down!!!TWO
+And!when!they!were!only!half-way!up!!!!TWO
+They!were!neither!up!nor!down!!!!!TWO
+[cloud_user@roshansyed27c Exercise Files]$ awk 'BEGIN{OFS="!"} {$11="TWO";print $0}' dukeofyork.txt
+
+
+[cloud_user@roshansyed27c Exercise Files]$ awk 'BEGIN{a=1;b=2;print a+b}'
+3
+[cloud_user@roshansyed27c Exercise Files]$ awk 'BEGIN{a=1;b=2;print a-b}'
+-1
+[cloud_user@roshansyed27c Exercise Files]$ awk 'BEGIN{a=1;b=2;print a*b}'
+2
+[cloud_user@roshansyed27c Exercise Files]$ awk 'BEGIN {a=1; print $0}' dukeofyork.txt
+
+[cloud_user@roshansyed27c Exercise Files]$ awk 'BEGIN{a=1} {print a, $0}' dukeofyork.txt
+1 The grand old Duke of York
+1 He had ten thousand men
+1 He marched them up to the top of the hill
+1 And he marched them down again
+1 And when they were up they were up
+1 And when they were down they were down
+1 And when they were only half-way up
+1 They were neither up nor down
+[cloud_user@roshansyed27c Exercise Files]$
+[cloud_user@roshansyed27c Exercise Files]$ awk 'BEGIN{a=1;++a} {print a, $0}' dukeofyork.txt
+2 The grand old Duke of York
+2 He had ten thousand men
+2 He marched them up to the top of the hill
+2 And he marched them down again
+2 And when they were up they were up
+2 And when they were down they were down
+2 And when they were only half-way up
+2 They were neither up nor down
+[cloud_user@roshansyed27c Exercise Files]$ awk 'BEGIN{a=1;a++} {print a, $0}' dukeofyork.txt
+2 The grand old Duke of York
+2 He had ten thousand men
+2 He marched them up to the top of the hill
+2 And he marched them down again
+2 And when they were up they were up
+2 And when they were down they were down
+2 And when they were only half-way up
+2 They were neither up nor down
+[cloud_user@roshansyed27c Exercise Files]$
+
+[cloud_user@roshansyed27c Exercise Files]$ awk '$3 ~ /^the/ {print $0}' dukeofyork.txt
+He marched them up to the top of the hill
+And when they were up they were up
+And when they were down they were down
+And when they were only half-way up
+[cloud_user@roshansyed27c Exercise Files]$ awk '$4 ~ /ere/ {print $0}' dukeofyork.txt
+And when they were up they were up
+And when they were down they were down
+And when they were only half-way up
+[cloud_user@roshansyed27c Exercise Files]$ awk ' /ere/ {print $0}' dukeofyork.txt
+And when they were up they were up
+And when they were down they were down
+And when they were only half-way up
+They were neither up nor down
