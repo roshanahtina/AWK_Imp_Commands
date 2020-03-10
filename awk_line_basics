@@ -259,8 +259,32 @@ And when they were only half-way up
 And when they were up they were up
 And when they were down they were down
 And when they were only half-way up
-[cloud_user@roshansyed27c Exercise Files]$ awk ' /ere/ {print $0}' dukeofyork.txt
+[cloud_user@roshansyed27c Exercise Files]$ awk '/ere/ {print $0}' dukeofyork.txt
 And when they were up they were up
 And when they were down they were down
 And when they were only half-way up
 They were neither up nor down
+
+[root@roshansyed27c Exercise Files]# awk 'BEGIN{a=1;b=2; print a b}'
+12
+[root@roshansyed27c Exercise Files]# awk 'END{a=1;b=2; print a b}'
+
+
+[root@roshansyed27c Exercise Files]# awk 'BEGIN{a=1;b=2; print a+b}'
+3
+[root@roshansyed27c Exercise Files]# awk 'BEGIN{a=1;b=2; print a/b}'
+0.5
+[root@roshansyed27c Exercise Files]# awk 'BEGIN{a=1;b=2; print a*b}'
+2
+[root@roshansyed27c Exercise Files]# awk 'BEGIN{a=1;b=2; print a-b}'
+-1
+[root@roshansyed27c Exercise Files]# awk 'BEGIN{a=1;b=boo; print a-b}'
+1
+[root@roshansyed27c Exercise Files]# awk 'BEGIN{a=1;b=2;c=3; print a b*c}'
+16
+[root@roshansyed27c Exercise Files]# awk 'BEGIN{a=1;b=2;c=3; print (a b) c}'
+123
+[root@roshansyed27c Exercise Files]# awk 'BEGIN{a=1;b=2;c=3; print (a b) * c}'
+36
+[root@roshansyed27c Exercise Files]#
+
