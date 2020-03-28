@@ -1,0 +1,28 @@
+---
+[root@test-server ~]# ll /mnt/
+total 0
+drwxr-xr-x. 2 root root 57 Mar 28 13:59 roshar
+drwxr-xr-x. 2 root root  6 Mar 28 13:59 shinovar
+
+
+[root@test-server ~]# cat /mnt/roshar/dalinar.sh
+#! /bin/bash
+
+trap "kill 0" EXIT
+
+# generate i/o on the system
+while true
+do
+  cp /mnt/roshar/loadfile /mnt/roshar/loadfile1
+done
+
+wait
+[root@test-server ~]#
+
+vmstat 1 4
+iostat -y 1 3
+iostat -dy -p xvdg 1 3
+lsblk
+lsof | grep “mount point or device major,minor number”
+ps -ef | grep (PID of script.sh)
+pstree -p (PID of script.sh)
