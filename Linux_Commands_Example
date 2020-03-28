@@ -26,3 +26,38 @@ lsblk
 lsof | grep “mount point or device major,minor number”
 ps -ef | grep (PID of script.sh)
 pstree -p (PID of script.sh)
+
+
+
+[cloud_user@test-server ~]$ iostat -dy
+Linux 3.10.0-1062.9.1.el7.x86_64 (test-server)  03/28/2020      _x86_64_        (2 CPU)
+
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+nvme0n1         291.52        37.72     72310.35     267906  513645008
+nvme1n1           0.01         0.15         0.00       1044          0
+
+[cloud_user@test-server ~]$ iostat -dy -p nvme0n1
+Linux 3.10.0-1062.9.1.el7.x86_64 (test-server)  03/28/2020      _x86_64_        (2 CPU)
+
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+nvme0n1         290.96        37.63     72170.49     267906  513816386
+nvme0n1p1       290.95        37.48     72170.49     266866  513816386
+
+[cloud_user@test-server ~]$ iostat -dy -p nvme0n1 1 5 | tee iostat_report
+Linux 3.10.0-1062.9.1.el7.x86_64 (test-server)  03/28/2020      _x86_64_        (2 CPU)
+
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+nvme0n1          45.00         0.00     10764.00          0      10764
+nvme0n1p1        45.00         0.00     10764.00          0      10764
+
+
+
+[cloud_user@test-server ~]$ vmstat -t 1 5 | tee vmstat_report
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu----- -----timestamp-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st                 EDT
+ 4  1      0 304220   2068 521244    0    0    19 35581 1217  716 46 31  1 20  0 2020-03-28 14:23:36
+ 2  1      0 303928   2068 521240    0    0     0  8968 2206 1728 49 18  0 34  0 2020-03-28 14:23:37
+ 1  1      0 303996   2068 521244    0    0     0  8968 2207 1737 49 18  0 34  0 2020-03-28 14:23:38
+ 4  0      0 303728   2068 521976    0    0     0  8977 2223 1723 50 17  0 33  0 2020-03-28 14:23:39
+ 2  1      0 304048   2068 521252    0    0     0 17676 2191 1621 49 22  0 30  0 2020-03-28 14:23:40
+[cloud_user@test-server ~]$
