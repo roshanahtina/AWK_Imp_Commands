@@ -4,6 +4,7 @@ total 0
 drwxr-xr-x. 2 root root 57 Mar 28 13:59 roshar
 drwxr-xr-x. 2 root root  6 Mar 28 13:59 shinovar
 
+dd -if=/dev/zero of=/mnt/roshar/loadfile bs=1M count=128
 
 [root@test-server ~]# cat /mnt/roshar/dalinar.sh
 #! /bin/bash
