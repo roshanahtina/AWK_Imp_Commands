@@ -47,6 +47,7 @@ if [ "$1" == help ]; then
     help
     exit
     echo "HELP content is done....!"
+fi
 
 
 
