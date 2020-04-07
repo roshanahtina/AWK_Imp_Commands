@@ -22,14 +22,14 @@ help ()
 }
 
 # If 1st parameters is UPDATE and then execute as below
-if [ "$1" == update ]; then
+if [ "$1" == "update" ]; then
     echo "We are got 1st parameter as 'update', so we are about to update the OS"
     update
     exit
     echo "UPDATE has been done"
     
 # If 1st parameters is cleanup and then execute as below
-if [ "$1" == cleanup ]; then
+if [ "$1" == "cleanup" ]; then
     echo "We are anout to cleanup the OS"
     cleanup
     exit
@@ -42,12 +42,9 @@ if [ "$1" != "update" -o "cleanup" ]; then
    echo "Else get rid of using this script... Thanks"
 
 # Please below is the help option for more usage of the script
-if [ "$1" == help ]; then
+if [ "$1" == "help" ]; then
     echo "We have got the help option so getting the help content as below"
     help
     exit
     echo "HELP content is done....!"
 fi
-
-
-
