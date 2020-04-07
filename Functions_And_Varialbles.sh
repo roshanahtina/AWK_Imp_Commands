@@ -40,7 +40,6 @@ if [ "$1" != "update" -o "cleanup" ]; then
    echo "Plesae use update or clenaup to perform the action on line server...."
    else
    echo "Else get rid of using this script... Thanks"
-}
 
 # Please below is the help option for more usage of the script
 if [ "$1" == help ]; then
