@@ -25,7 +25,7 @@ help ()
 if [ "$1" == "update" ]; then
     echo "We are got 1st parameter as 'update', so we are about to update the OS"
     update
-    exit
+    sleep 2
     echo "UPDATE has been done"
 fi
 
@@ -33,7 +33,7 @@ fi
 if [ "$1" == "cleanup" ]; then
     echo "We are anout to cleanup the OS"
     cleanup
-    else
+    sleep 2
     echo "CLEANUP has been done"
 fi
 
