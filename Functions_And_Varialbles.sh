@@ -12,7 +12,7 @@ update ()
 cleanup ()
 {
       echo "---------------We are cleaning up after yum update for OS--------------"    
-      yum  clean -yy
+      yum  clean all -yy
 }
 
 help ()
