@@ -6,12 +6,12 @@ set -e
 update ()
 {
     echo "--------------We are starting the OS update by using you update all command....!-----------------"
-    yum update -yy
+    sudo yum update -yy
 }
 
 cleanup ()
 {
-      echo "---------------We are cleaning up after yum update for OS--------------"    
+      echo "----We are cleaning up after yum update for OS----"    
       yum  clean all -yy
 }
 
@@ -23,18 +23,18 @@ help ()
 
 # If 1st parameters is UPDATE and then execute as below
 if [ "$1" == "update" ]; then
-    echo "===============We are got 1st parameter as 'update', so we are about to update the OS============"
+    echo "=====We are got 1st parameter as 'update', so we are about to update the OS===="
     update
     sleep 2
-    echo "=============UPDATE has been done============="
+    echo "====UPDATE has been done===="
 fi
 
 # If 1st parameters is cleanup and then execute as below
 if [ "$1" == "cleanup" ]; then
-    echo "==============We are anout to cleanup the OS=================="
+    echo "====We are anout to cleanup the OS===="
     cleanup
     sleep 2
-    echo "=================CLEANUP has been done=================="
+    echo "====CLEANUP has been done===="
 fi
 
 ## What if we didn't get update and cleanup option as 1st prameters
@@ -46,8 +46,8 @@ fi
 
 # Please below is the help option for more usage of the script
 if [ "$1" == "help" ]; then
-    echo "===============We have got the help option so getting the help content as below================="
+    echo "====We have got the help option so getting the help content as below====="
     help
     else
-    echo "=============HELP content is done....!==============="
+    echo "==HELP content is done....!==="
 fi
