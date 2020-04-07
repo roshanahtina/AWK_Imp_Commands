@@ -37,12 +37,12 @@ if [ "$1" == "cleanup" ]; then
     echo "=================CLEANUP has been done=================="
 fi
 
-# What if we didn't get update and cleanup option as 1st prameters
-if [ "$1" != "update" -o "cleanup" ]; then
-   echo "==================Plesae use update or clenaup to perform the action on line server======================="
-   else
-   echo "==============Else get rid of using this script... Thanks==================="
-fi
+## What if we didn't get update and cleanup option as 1st prameters
+#if [ "$1" != "update" -o "cleanup" ]; then
+#   echo "==================Plesae use update or clenaup to perform the action on line server======================="
+#   else
+#   echo "==============Else get rid of using this script... Thanks==================="
+#fi
 
 # Please below is the help option for more usage of the script
 if [ "$1" == "help" ]; then
