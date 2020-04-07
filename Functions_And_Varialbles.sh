@@ -27,24 +27,27 @@ if [ "$1" == "update" ]; then
     update
     exit
     echo "UPDATE has been done"
-    
+fi
+
 # If 1st parameters is cleanup and then execute as below
 if [ "$1" == "cleanup" ]; then
     echo "We are anout to cleanup the OS"
     cleanup
-    exit
+    else
     echo "CLEANUP has been done"
+fi
 
 # What if we didn't get update and cleanup option as 1st prameters
 if [ "$1" != "update" -o "cleanup" ]; then
    echo "Plesae use update or clenaup to perform the action on line server...."
    else
    echo "Else get rid of using this script... Thanks"
+fi
 
 # Please below is the help option for more usage of the script
 if [ "$1" == "help" ]; then
     echo "We have got the help option so getting the help content as below"
     help
-    exit
+    else
     echo "HELP content is done....!"
 fi
