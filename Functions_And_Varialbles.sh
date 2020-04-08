@@ -49,3 +49,13 @@ if [ "$1" == "help" ]; then
     echo "====We have got the help option so getting the help content as below====="
     help
 fi
+
+if [ "$1" != "help" -o "update" -o "cleanup" ]; then
+echo << _EOF_
+You should either use of "help or update or cleanup"
+Else you will face error....
+./script help
+./script cleanup
+./script update
+_EOF_
+fi
