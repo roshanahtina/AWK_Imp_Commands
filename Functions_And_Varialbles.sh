@@ -1,6 +1,7 @@
 #!/bin/bash
 ## This is a examples from Linux academy
 ## https://linuxacademy.com/blog/linux/conditions-in-bash-scripting-if-statements/
+## https://ss64.com/bash/
 
 set -e
 
