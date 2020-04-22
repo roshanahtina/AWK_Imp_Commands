@@ -34,12 +34,20 @@ Else you will face error....
 _EOF_
 }
 
+complete ()
+{
+--------------------
+--   COMPLETE    --
+--------------------
+}
+
 # If 1st parameters is UPDATE and then execute as below
 if [ "$1" == "update" ]; then
     echo "=====We are got 1st parameter as 'update', so we are about to update the OS===="
     update
     sleep 2
     echo "====UPDATE has been done===="
+    complete
 fi
 
 # If 1st parameters is cleanup and then execute as below
@@ -48,6 +56,7 @@ if [ "$1" == "cleanup" ]; then
     cleanup
     sleep 2
     echo "====CLEANUP has been done===="
+    complete
 fi
 
 ## What if we didn't get update and cleanup option as 1st prameters
@@ -61,6 +70,7 @@ fi
 if [ "$1" == "help" ]; then
     echo "====We have got the help option so getting the help content as below====="
     help
+    complete
 fi
 
 if [ -n "$1"  ]; then
