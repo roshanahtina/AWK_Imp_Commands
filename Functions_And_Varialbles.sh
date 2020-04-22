@@ -21,6 +21,17 @@ help ()
     echo "----Please use correct prameters for script to run...-----"
 }
 
+up-help ()
+{
+echo << _EOF_
+You should either use of "help or update or cleanup"
+Else you will face error....
+./script help
+./script cleanup
+./script update
+_EOF_
+}
+
 # If 1st parameters is UPDATE and then execute as below
 if [ "$1" == "update" ]; then
     echo "=====We are got 1st parameter as 'update', so we are about to update the OS===="
@@ -50,13 +61,7 @@ if [ "$1" == "help" ]; then
     help
 fi
 
-if [ "$1" != "help" -o "update" -o "cleanup" ]; then
-echo << _EOF_
-You should either use of "help or update or cleanup"
-Else you will face error....
-./script help
-./script cleanup
-./script update
-_EOF_
-exit 1
+if [ -n "$1"  ]; then
+    echo "This is an invalide argument.... So please provide an valid arguments"
+    up-help
 fi
