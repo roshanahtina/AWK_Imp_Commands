@@ -25,7 +25,7 @@ help ()
 
 up-help ()
 {
-echo << _EOF_
+cat << _EOF_
 You should either use of "help or update or cleanup"
 Else you will face error....
 ./script help
@@ -64,6 +64,6 @@ if [ "$1" == "help" ]; then
 fi
 
 if [ -n "$1"  ]; then
-    echo "This is an invalide argument.... So please provide an valid arguments"
+    echo "This is an invalide argument.... So please provide an valid arguments ex... 'up-help'"
     up-help
 fi
