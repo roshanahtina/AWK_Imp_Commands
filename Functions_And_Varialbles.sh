@@ -58,4 +58,5 @@ Else you will face error....
 ./script cleanup
 ./script update
 _EOF_
+exit 1
 fi
