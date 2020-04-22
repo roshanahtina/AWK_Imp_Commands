@@ -48,6 +48,7 @@ if [ "$1" == "update" ]; then
     sleep 2
     echo "====UPDATE has been done===="
     complete
+    exit
 fi
 
 # If 1st parameters is cleanup and then execute as below
@@ -57,6 +58,7 @@ if [ "$1" == "cleanup" ]; then
     sleep 2
     echo "====CLEANUP has been done===="
     complete
+    exit
 fi
 
 ## What if we didn't get update and cleanup option as 1st prameters
