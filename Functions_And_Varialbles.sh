@@ -36,9 +36,9 @@ _EOF_
 
 complete ()
 {
---------------------
---   COMPLETE    --
---------------------
+echo "--------------------"
+echo "---   COMPLETE   ---"
+echo "--------------------"
 }
 
 # If 1st parameters is UPDATE and then execute as below
