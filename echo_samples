@@ -1,0 +1,46 @@
+echo Options
+ Options	 Description
+ -n	 do not print the trailing newline.
+ -e	 enable interpretation of backslash escapes.
+ \b	 backspace
+ \\	 backslash
+ \n	 new line
+ \r	 carriage return
+ \t	 horizontal tab
+ \v	 vertical tab
+ 
+ 
+[cloud_user@roshansyed21c ~]$ echo "This \bis \bRosahna \bMunaar"
+This \bis \bRosahna \bMunaar
+[cloud_user@roshansyed21c ~]$ echo -e "This \bis \bRosahna \bMunaar"
+ThisisRosahnaMunaar
+
+ 
+[cloud_user@roshansyed21c ~]$ echo -n "This \n\vIs \n\vRoshan \n\vMunavar \n\vHere \n\v......."
+This \n\vIs \n\vRoshan \n\vMunavar \n\vHere \n\v.......[cloud_user@roshansyed21c ~]$
+
+[cloud_user@roshansyed21c ~]$ echo -e "This \n\vIs \n\vRoshan \n\vMunavar \n\vHere \n\v......."
+This
+
+Is
+
+Roshan
+
+Munavar
+
+Here
+
+.......
+[cloud_user@roshansyed21c ~]$
+
+[cloud_user@roshansyed21c ~]$ echo "This \vIs \vRoshan \vMunavar \vHere \v......."
+This \vIs \vRoshan \vMunavar \vHere \v.......
+[cloud_user@roshansyed21c ~]$ echo -e "This \vIs \vRoshan \vMunavar \vHere \v......."
+This
+     Is
+        Roshan
+               Munavar
+                       Here
+                            .......
+[cloud_user@roshansyed21c ~]$
+
