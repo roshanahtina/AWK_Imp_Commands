@@ -46,7 +46,6 @@ if [ "$1" == "update" ]; then
     echo "=====We are got 1st parameter as 'update', so we are about to update the OS===="
     update
     sleep 2
-    echo "====UPDATE has been done===="
     complete
     exit
 fi
@@ -56,7 +55,6 @@ if [ "$1" == "cleanup" ]; then
     echo "====We are anout to cleanup the OS===="
     cleanup
     sleep 2
-    echo "====CLEANUP has been done===="
     complete
     exit
 fi
@@ -73,9 +71,11 @@ if [ "$1" == "help" ]; then
     echo "====We have got the help option so getting the help content as below====="
     help
     complete
+    exit
 fi
 
 if [ -n "$1"  ]; then
     echo "This is an invalide argument.... So please provide an valid arguments ex... 'up-help'"
     up-help
+    exit
 fi
