@@ -1,4 +1,12 @@
 ---
+## SSH AGENT ADD and AWS Key USsage
+
+[root@test-server ~]# ssh-agent bash 
+
+[root@test-server ~]# ssh-add private-key.pem
+
+---
+
 [root@test-server ~]# ll /mnt/
 total 0
 drwxr-xr-x. 2 root root 57 Mar 28 13:59 roshar
