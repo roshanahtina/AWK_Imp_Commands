@@ -1,4 +1,12 @@
 ---
+## SSH AGENT ADD and AWS Key USsage
+
+[root@test-server ~]# ssh-agent bash 
+
+[root@test-server ~]# ssh-add private-key.pem
+
+---
+
 [root@test-server ~]# ll /mnt/
 total 0
 drwxr-xr-x. 2 root root 57 Mar 28 13:59 roshar
@@ -28,7 +36,7 @@ lsof | grep “mount point or device major,minor number”
 ps -ef | grep (PID of script.sh)
 pstree -p (PID of script.sh)
 
-
+[cloud_user@test-server ~]$ yum install sysstat -yyy ## To verify iostat command
 
 [cloud_user@test-server ~]$ iostat -dy
 Linux 3.10.0-1062.9.1.el7.x86_64 (test-server)  03/28/2020      _x86_64_        (2 CPU)
