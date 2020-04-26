@@ -24,7 +24,6 @@ for (( i=$start; i<=$end; i++ ))
 do 
 echo -n =
 done
-exit
 }
 
 #Calling the function to print the char
