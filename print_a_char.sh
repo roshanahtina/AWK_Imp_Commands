@@ -7,7 +7,7 @@ set -e
 char=$1
 count=$2
 
-for ( i=0; i=$count; i++ )
+for (( i=0; i=$count; i++ ))
 do
-echo "This is My Charector :: $char...!"
+echo "This is My Charector - $char..."
 done
