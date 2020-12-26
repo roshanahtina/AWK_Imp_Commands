@@ -12,6 +12,8 @@ then
   for user in `cat $USERFILE`
     do
       useradd $user; echo "$user:linux" | chpasswd
+      #userdel -r $user
+      echo "Below mentioned users are created"
       echo $user
     done
 exit 20
