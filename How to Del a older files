@@ -1,0 +1,5 @@
+We are having following commands to archive older logs.
+find /var/log/nagios/archives/*.log -mtime +1475 -exec gzip -9 {} \;  # to compress 2016 log files
+find /var/log/nagios/archives/*.log -mtime +1475 -exec gzip -9 {} \;  # to compress older than 2017 log files
+find /var/log/nagios/archives/*.log -mtime +1110 -exec gzip -9 {} \; # to compress older than 2018 log files
+find /var/log/nagios/archives/*.log -mtime +380 -exec gzip -9 {} \; # to compress older than 2019 log files
