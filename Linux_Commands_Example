@@ -28,6 +28,8 @@ done
 wait
 [root@test-server ~]#
 
+---
+
 vmstat 1 4
 iostat -y 1 3
 iostat -dy -p xvdg 1 3
@@ -36,6 +38,8 @@ lsof | grep “mount point or device major,minor number”
 ps -ef | grep (PID of script.sh)
 pstree -p (PID of script.sh)
 
+iostat:
+-------
 [cloud_user@test-server ~]$ yum install sysstat -yyy ## To verify iostat command
 
 [cloud_user@test-server ~]$ iostat -dy
@@ -60,7 +64,8 @@ nvme0n1          45.00         0.00     10764.00          0      10764
 nvme0n1p1        45.00         0.00     10764.00          0      10764
 
 
-
+vmstat_report:
+-------------
 [cloud_user@test-server ~]$ vmstat -t 1 5 | tee vmstat_report
 procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu----- -----timestamp-----
  r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st                 EDT
@@ -70,3 +75,8 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  4  0      0 303728   2068 521976    0    0     0  8977 2223 1723 50 17  0 33  0 2020-03-28 14:23:39
  2  1      0 304048   2068 521252    0    0     0 17676 2191 1621 49 22  0 30  0 2020-03-28 14:23:40
 [cloud_user@test-server ~]$
+
+
+GREP CMD:
+--------
+cat test_queryOutput.txt | grep -v -e 'NULL\|id\|datacentr\|use\|created\|row' |  sort  -u
