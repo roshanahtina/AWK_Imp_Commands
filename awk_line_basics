@@ -371,3 +371,10 @@ Line 8, field 2: were
 Line 8, field 3: neither
 [cloud_user@roshansyed27c Exercise Files]$
 
+GREP And Replace:
+=================
+awk '{ print NR, NF, $0}' dal1.hosts.10.modify.txt
+awk '{if(NF >=6){ print NR, NF, $0} else {print "long line $0"}' rosh1.hosts.10.modify.txt
+awk '{if(NF = 5){ print NR,NF $0} else {print "long line $0"}}' rosh1.hosts.10.modify.txt
+awk '{if(NF = 5){ print NR,NF, $0} else {print "long line $0"}}' roshn1.hosts.10.modify.txt
+awk '{if (NF <= 2) {print NR,NF, $2 "\t86400\tIN\tA\t" $1}}' roshan1.hosts.10.txt
