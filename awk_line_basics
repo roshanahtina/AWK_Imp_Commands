@@ -380,7 +380,7 @@ awk '{if(NF = 5){ print NR,NF, $0} else {print "long line $0"}}' roshn1.hosts.10
 awk '{if (NF <= 2) {print NR,NF, $2 "\t86400\tIN\tA\t" $1}}' roshan1.hosts.10.txt
 
 
-Print Alrernate lines:
+Print Alternate lines:
 =======================
 # Print ODD lines
 [rms@example091a /home]$ awk '{print NR%2==1, $5}' ROSHAN-122345
