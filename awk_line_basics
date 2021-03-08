@@ -378,3 +378,21 @@ awk '{if(NF >=6){ print NR, NF, $0} else {print "long line $0"}' rosh1.hosts.10.
 awk '{if(NF = 5){ print NR,NF $0} else {print "long line $0"}}' rosh1.hosts.10.modify.txt
 awk '{if(NF = 5){ print NR,NF, $0} else {print "long line $0"}}' roshn1.hosts.10.modify.txt
 awk '{if (NF <= 2) {print NR,NF, $2 "\t86400\tIN\tA\t" $1}}' roshan1.hosts.10.txt
+
+
+Print Alrernate lines:
+=======================
+# Print ODD lines
+[rms@example091a /home]$ awk '{print NR%2==1, $5}' FABREQ-13072
+1 exam.roshan.com.
+0 9.9.9.0
+1 rms-.adn.roshan.com.
+0 9.26.9.9
+
+[rms@example091a /home]$ for i in $(awk 'NR%2==1 {print $5}' FABREQ-13072); do host $i;done
+rsf-exam.roshan.com has address 9.9.9.0
+rms-.adn.roshan.com  9.26.9.9
+
+
+
+
