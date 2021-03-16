@@ -389,7 +389,7 @@ Print Alternate lines:
 1 rms-.adn.roshan.com.
 0 9.26.9.9
 
-[rms@example091a /home]$ for i in $(awk 'NR%2==1 {print $5}' ROSHAN-122345); do host $i;done
+[rms@example091a /home]$ for i in $(awk 'NR%2==1 {print $5}' storage.txt); do host $i;done
 rsf-exam.roshan.com has address 9.9.9.0
 rms-.adn.roshan.com  9.26.9.9
 
