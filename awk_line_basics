@@ -393,6 +393,9 @@ Print Alternate lines:
 rsf-exam.roshan.com has address 9.9.9.0
 rms-.adn.roshan.com  9.26.9.9
 
+Alternate odd lines:
+[rms@example091a /home]$ awk 'NR % 2 == 1' storage.txt
 
-
+awk 'NR % 2' storage.txt
+[rms@example091a /home]$ awk 'NR % 2' storage.txt
 
