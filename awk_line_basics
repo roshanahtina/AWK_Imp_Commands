@@ -399,3 +399,5 @@ Alternate odd lines:
 awk 'NR % 2' storage.txt
 [rms@example091a /home]$ awk 'NR % 2' storage.txt
 
+sed -n 'p;n' storage.txt -- print the odd line
+sed -n 'n;p' storage.txt -- print the even line
