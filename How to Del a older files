@@ -3,3 +3,5 @@ find /var/log/httpd/*.log -mtime +1475 -exec gzip -9 {} \;  # to compress 2016 l
 find /var/log/httpd/*.log -mtime +1475 -exec gzip -9 {} \;  # to compress older than 2017 log files
 find /var/log/httpd/*.log -mtime +1110 -exec gzip -9 {} \; # to compress older than 2018 log files
 find /var/log/httpd/*.log -mtime +380 -exec gzip -9 {} \; # to compress older than 2019 log files
+###single file on same time###
+sudo gzip -9 systest_log.log
