@@ -107,3 +107,10 @@ cd /proc/29535/fd/ ; ls -ltrh
 2>/dev/null sudo du -sh /var/log/* | sort -hrk1 | head
 2>/dev/null sudo du -sh /data/* | sort -hrk1 | head
 2>/dev/null sudo du -sh /home/* | sort -hrk1 | head
+
+
+# To Clean Up The Content In A File:
+
+> /path/to/the/file.txt
+
+gzip -9 <file name>
