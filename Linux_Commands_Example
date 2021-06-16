@@ -80,3 +80,30 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 GREP CMD:
 --------
 cat test_queryOutput.txt | grep -v -e 'NULL\|id\|datacentr\|use\|created\|row' |  sort  -u
+
+
+DISK Space Issues::
+-------------------
+
+# Inode: 
+
+ls -i firewalls.log-20210321-2
+
+# Deleted file looking by lsof command::
+
+sudo lsof | grep deleted | grep frewalls*
+sudo lsof | grep deleted
+
+# Calculate the size 
+
+sudo du -xsh /var/
+
+# Getting into process ‘FD’
+
+cd /proc/29535/fd/ ; ls -ltrh
+
+# Calculate huge size files
+
+2>/dev/null sudo du -sh /var/log/* | sort -hrk1 | head
+2>/dev/null sudo du -sh /data/* | sort -hrk1 | head
+2>/dev/null sudo du -sh /home/* | sort -hrk1 | head
