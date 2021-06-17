@@ -1,1 +1,5 @@
 Message Queue [OR] Message Bus:
+
+Ports::
+567 - is for messaging protocal
+15672 - is mgmt web interface
