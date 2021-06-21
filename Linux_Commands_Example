@@ -114,3 +114,208 @@ cd /proc/29535/fd/ ; ls -ltrh
 > /path/to/the/file.txt
 
 gzip -9 <file name>
+
+
+Linux Commands:
+
+LOOPS::
+
+Looking for Remote file read::
+[rmunavar@roshanlab0101 ~]$ for ho in $(awk '{print $1}' /home/roshan/host_name); do ssh -t $ho "sudo cat /etc/sysconfig/prelink | grep PRELINKING"; done
+
+========================================================================================
+RPM::
+
+RPM Package Checking::
+[roshan@roshanlab0101 ~]$ for ho in $(awk '{print $1}' /home/rmunavar/host_name); do ssh -t $ho "sudo rpm -q prelink"; done
+
+
+========================================================================================
+
+TAR::
+
+1. Create tar Archive File
+# tar -cvf tecmint-14-09-12.tar /home/tecmint/
+
+2. Create tar.gz Archive File
+# tar cvzf MyImages-14-09-12.tar.gz /home/MyImages
+
+3. Create tar.bz2 Archive File
+# tar cvfj Phpfiles-org.tar.bz2 /home/php
+
+4. Untar tar Archive File
+# tar -xvf public_html-14-09-12.tar
+
+5. Uncompress tar.gz Archive File
+# tar -xvf thumbnails-14-09-12.tar.gz
+
+6. Uncompress tar.bz2 Archive File
+# tar -xvf videos-14-09-12.tar.bz2
+
+7. List Content of tar Archive File
+# tar -tvf uploadprogress.tar
+
+10. Untar Single file from tar File
+# tar -xvf cleanfiles.sh.tar cleanfiles.sh
+OR
+# tar --extract --file=cleanfiles.sh.tar cleanfiles.sh
+
+cleanfiles.sh
+
+11. Untar Single file from tar.gz File
+# tar -zxvf tecmintbackup.tar.gz tecmintbackup.xml
+OR
+# tar --extract --file=tecmintbackup.tar.gz tecmintbackup.xml
+
+tecmintbackup.xml
+
+
+========================================================================================
+
+SCP and ZIP
+
+Rsync::
+
+#
+[roshan@roshan0401 ~]$ sudo rsync -raiu -e 'ssh -l sladmin' roshan0101:/usr/local/etc/nas /usr/local/etc/nas
+cd+++++++++ nas/
+>f+++++++++ nas/ims_utility.crt
+>f+++++++++ nas/ims_utility.key
+>f+++++++++ nas/nasaudit.yaml
+cd+++++++++ nas/nasaudit/
+>f+++++++++ nas/nasaudit/LockboxAudit.yaml
+>f+++++++++ nas/nasaudit/NasAudit.yaml
+
+-v : verbose
+-r : copies data recursively (but don’t preserve timestamps and permission while transferring data
+-a : archive mode, archive mode allows copying files recursively and it also preserves symbolic links, file permissions, user & group ownerships and timestamps
+-z : compress file data
+-h : human-readable, output numbers in a human-readable format
+
+
+#
+[regarrett@roshan ~]$ sudo rsync -raiu -e 'ssh -l roshan' --filter '+ softlayer/nas_scripts' --filter '- softlayer/nas_scripts/.git*' --filter '- softlayer/*' roshan0101:/usr/local/roshanlayer /usr/local/roshanlayer
+cd+++++++++ softlayer/
+cd+++++++++ softlayer/nas_scripts/
+>f+++++++++ softlayer/nas_scripts/Rakefile
+cd+++++++++ softlayer/nas_scripts/Rake/
+>f+++++++++ softlayer/nas_scripts/Rake/gem.rb
+
+#
+[rmunavar@roshan roshan-16013]$ rsync -aP -e 'ssh -l rmunavar' roshan.sllab.local:/srv/bit9/data/Logs/* /tmp/roshan-16013/roshan.roshanlab.local/
+
+Password:
+Could not chdir to home directory /home/rmunavar: No such file or directory
+receiving incremental file list
+Errors.bt9
+       19443 100%    1.85MB/s    0:00:00 (xfer#1, to-check=9/10)
+Install.bt9
+....
+....
+      120632 100%  179.58kB/s    0:00:00 (xfer#10, to-check=0/10)
+
+sent 217 bytes  received 1225081529 bytes  48042421.41 bytes/sec
+total size is 1224781774  speedup is 1.00
+[rmunavar@isshelladminlab9701 FABREQ-16013]$
+
+========================================================================================
+TOP Most Process::
+
+[rmunavar@roshan ~]$ ps -Ao user,uid,comm,pid,pcpu,tty --sort=-pcpu | head -n 6
+USER       UID COMMAND           PID %CPU TT
+unbound    495 unbound          9678  5.3 ?
+root         0 rpm             32521  1.5 ?
+root         0 splunkd          3624  0.4 ?
+root         0 rcu_sched           9  0.2 ?
+telegraf   496 telegraf         2619  0.1 ?
+[rmunavar@rsmil0102b ~]$
+
+[rmunavar@roshan ~]$ sudo ps -eo pcpu,pid,user,args --no-headers| sort -t. -nk1,2 -k4,4 -r |head -n 5
+[sudo] password for rmunavar:
+ 5.3  9678 unbound  /usr/sbin/unbound -c /var/lib/unbound/etc/unbound.conf -d
+ 1.9   964 root     chef-client worker: ppid=10066;start=01:39:11;
+ 0.4  3624 root     splunkd -h 172.27.140.56 -p 8089 start
+ 0.4  6774 root     sshd: rmunavar [priv]
+ 0.2     9 root     [rcu_sched]
+[rmunavar@roshan ~]$
+
+[rmunavar@roshan ~]$ top -b -n 1 | head -n 12  | tail -n 5
+ 9678 unbound   20   0 9216108   2.0g   1344 S 652.3  3.2  19069:49 unbound
+ 3624 root      20   0  418112  37360   3060 S   1.3  0.1   1701:18 splunkd
+  126 root      20   0       0      0      0 S   0.6  0.0   0:04.38 ksoftirqd/23
+  961 root      20   0       0      0      0 S   0.6  0.0   1:33.79 xfsaild/dm-5
+  964 root      20   0 1314076  99680    388 D   0.6  0.2   0:23.01 chef-client
+[rmunavar@roshan ~]$
+
+[rmunavar@roshan ~]$ top | grep VBoxHeadless
+ 6566 roshan+  20   0 3478336  73340  38452 S   8.7  0.0   3767:23 VBoxHeadless
+11503 roshan  20   0 5540216 471232 396208 S   8.7  0.2   1267:42 VBoxHeadless
+23262 roshan  20   0 1965916 276352 219684 S   4.3  0.1 295:33.77 VBoxHeadless
+ 6566 roshan+  20   0 3478336  73340  38452 S  11.8  0.0   3767:24 VBoxHeadless
+11503 roshan  20   0 5540216 471232 396208 S   3.0  0.2   1267:42 VBoxHeadless
+12440 roshan  20   0 5540220 471288 398244 S   2.6  0.2 940:24.34 VBoxHeadless
+
+========================================================================================
+
+Just use the journalctl command, as in:
+journalctl -u service-name.service
+
+Or, to see only log messages for the current boot:
+journalctl -u service-name.service -b
+
+For things named <something>.service, you can actually just use <something>, as in:
+journalctl -u service-name
+
+========================================================================================
+For Loops::
+---------
+
+[rmunavar@roshan ~]$ for ho in $(awk '{print $1}' /home/roshan/host_carbon); do ssh -t $ho "ls -ltrh"; done
+
+[rmunavar@roshan ~]$ for ho in $(awk '{print $1}' /home/roshan/host_name); do ssh -t $ho "sudo cat /etc/sysconfig/prelink | grep PRELINKING"; done
+
+[rmunavar@roshan ~]$ for ho in $(awk '{print $1}' /home/roshan/host_name); do ssh -t $ho "sudo rpm -q prelink"; done
+
+[rmunavar@roshan ~]$ for ho in $(cat /home/roshan/host_carbon); do ping -c 1 $ho; done | grep "100% packet loss"
+1 packets transmitted, 0 received, 100% packet loss, time 10000ms
+
+[rmunavar@roshan ~]$ for ho in $(cat /home/roshan/host_carbon); do ping -c 1 $ho; done
+
+[rmunavar@roshan ~]$ for ho in $(cat /home/roshan/host_carbon); do ssh -t $ho "df -hT | grep /"; done
+
+
+'abrt-cli status' timed out
+========================================================================================
+watch::
+——————
+
+watch -n 5 df -h
+
+watch -d uptime
+
+watch "netstat -anp | grep -c ':80\b.*LISTEN'"
+
+========================================================================================
+
+IP address ADDITION::
+
+ip route add 161.26.0.0/16 via 10.0.143.65
+
+vi /etc/sysconfig/network-scripts/route-eth1
+
+========================================================================================
+tcpdump::
+---------
+
+tcpdump -i eth2 -v -s 1500 -c 10 '(ether[12:2]=0x88cc or ether[20:2]=0x2000)'
+tcpdump -i eth1 -v -s 1500 -c 10 '(ether[12:2]=0x88cc or ether[20:2]=0x2000)'
+tcpdump -i eth1 -v -s 1500 -c 10 'ether[20:2]=0x2000)'
+tcpdump -nn -i eth1 -v -s 1500 -c 10 'ether[20:2]=0x2000)'
+ping 10.201.132.65
+tcpdump -i eth1 icmp
+ip a
+tcpdump -i eth1 icmp
+tcpdump -i eth1 icmp | grep roshan
+tcpdump -i eth1 icmp | grep roshan.roshan.local
+
+========================================================================================
