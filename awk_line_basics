@@ -406,3 +406,17 @@ sed -n 'n;p' storage.txt -- print the even line
 [rms@example091a /home]$  for i in $(awk 'NR==1,NR==10{print $1}' FABREQ-16222/LON06.txt); do host $i.service.example.com; done
 lon3.service.example.com has address 10.249.51.200
 lon3.service.example.com has address 10.249.51.201
+
+#
+[rcoffie@isshelladmindal0501 ~]$ for host in wwwdroshan0101{a..f} ; do nslookup $host ;done
+Server:         172.18.18.21
+Address:        172.18.18.21#53
+
+Name:   wwwroshan0101a.softlayer.local
+Address: 172.17.7.16
+
+Server:         172.18.18.21
+Address:        172.18.18.21#53
+
+Name:   wwwroshan0101b.softlayer.local
+Address: 172.17.7.18
