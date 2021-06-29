@@ -403,9 +403,9 @@ sed -n 'p;n' storage.txt -- print the odd line
 sed -n 'n;p' storage.txt -- print the even line
 
 # Print Range of lines 
-[rms@example091a /home]$  for i in $(awk 'NR==1,NR==10{print $1}' FABREQ-16222/LON06.txt); do host $i.service.example.com; done
-lon3.service.example.com has address 10.249.51.200
-lon3.service.example.com has address 10.249.51.201
+[rms@example091a /home]$  for i in $(awk 'NR==1,NR==10{print $1}' ROSREQ-16222/LON06.txt); do host $i.roshan.example.com; done
+lon3.roshan.example.com has address 10.249.51.200
+lon3.roshan.example.com has address 10.249.51.201
 
 #
 [rcoffie@isshelladmindal0501 ~]$ for host in wwwdroshan0101{a..f} ; do nslookup $host ;done
